@@ -43,6 +43,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: false,
         searched: [...action.payload],
+        filtered: [],
       };
     }
     case FILTERED_SOUNDS: {
@@ -50,6 +51,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: false,
         filtered: [...action.payload],
+        searched: [],
       };
     }
     case ALL_CATEGORIES: {

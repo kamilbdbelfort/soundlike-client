@@ -44,10 +44,9 @@ export default function HomePage() {
               <CardSection title="LATEST" soundsList={latestSounds} />{" "}
             </div>
           ) : (
-            searchedSounds !== [] &&
-            searchedSounds.map((item) => {
-              return <div></div>;
-            })
+            searchedSounds !== [] && (
+              <CardSection title="text" soundsList={searchedSounds} />
+            )
           )}
         </div>
       )}
