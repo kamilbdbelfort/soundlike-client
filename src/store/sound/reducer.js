@@ -49,7 +49,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        filtered: [...state.filtered, ...action.payload],
+        filtered: [...action.payload],
       };
     }
     case ALL_CATEGORIES: {

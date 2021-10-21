@@ -11,7 +11,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllCategories } from "../../store/sound/selectors";
 import { useDispatch } from "react-redux";
-import { fetchSearchedSounds } from "../../store/sound/actions";
+import {
+  fetchSearchedSounds,
+  fetchFilteredSounds,
+} from "../../store/sound/actions";
 
 export default function NavBar() {
   const dispatch = useDispatch();
@@ -56,7 +59,11 @@ export default function NavBar() {
                   return (
                     <NavDropdown.Item
                       value={ctg.name}
-                      onClick={(e) => setCategory(ctg.name)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCategory(ctg.name);
+                        dispatch(fetchFilteredSounds(ctg.id));
+                      }}
                     >
                       {ctg.name}
                     </NavDropdown.Item>
