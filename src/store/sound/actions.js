@@ -6,6 +6,7 @@ export const POPULAR_SOUNDS = "POPULAR_SOUNDS";
 export const LATEST_SOUNDS = "LATEST_SOUNDS";
 export const SEARCHED_SOUNDS = "SEARCHED_SOUNDS";
 export const FILTERED_SOUNDS = "FILTERED_SOUNDS";
+export const ALL_CATEGORIES = "ALL_CATEGORIES";
 
 export function startLoading() {
   return {
@@ -38,6 +39,13 @@ export function fetchedFilteredSounds(sounds) {
   return {
     type: FILTERED_SOUNDS,
     payload: sounds,
+  };
+}
+
+export function fetchedAllCategories(categories) {
+  return {
+    type: ALL_CATEGORIES,
+    payload: categories,
   };
 }
 
@@ -87,4 +95,14 @@ export function fetchFilteredSounds(id) {
       console.log(e.message);
     }
   };
+}
+
+export async function fetchAllCategories(dispatch, getState) {
+  dispatch(startLoading);
+  try {
+    const response = await axios.get(`${apiUrl}/categories`);
+    dispatch(fetchedAllCategories(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
 }
