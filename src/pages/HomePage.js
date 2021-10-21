@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../components/navbar/NavBar";
 import Loading from "../components/loading/Loading";
-import CardSection from "../components/CardSection";
+import CardSection from "../components/cardSection/index";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import {
