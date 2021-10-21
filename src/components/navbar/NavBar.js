@@ -11,10 +11,17 @@ import { useState } from "react";
 
 export default function NavBar() {
   const [text, setText] = useState("");
+  const [category, setCategory] = useState("");
+
+  const change_category = (event) => {
+    console.log("new sort order:", event.target.value);
+    setCategory(event.target.value);
+  };
+
   return (
     <div style={{ margin: "0 1em" }}>
       <Navbar bg="light" expand="lg" style={{ padding: "1.5em" }}>
-        <Container style={{ display: "flex" }}>
+        <Container>
           <Navbar.Brand href="/"> 🎙️ SOUNDLIKE 🎙️</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -23,7 +30,7 @@ export default function NavBar() {
                 <Form.Group className="mb-3" controlId="formBasicSearch">
                   <Form.Control
                     type="text"
-                    style={{ width: "90%", margin: "0 2em" }}
+                    style={{ width: "700px", margin: "0 2em" }}
                     placeholder="Search for sounds, ex: friends, star wars..."
                     value={text}
                     onChange={(event) => setText(event.target.value)}
@@ -37,9 +44,10 @@ export default function NavBar() {
               <NavDropdown
                 title="Categories"
                 id="basic-nav-dropdown"
-                style={{ justifyContent: "flex-end" }}
+                onChange={change_category}
+                value={category}
               >
-                <NavDropdown.Item href="/">Action</NavDropdown.Item>
+                <NavDropdown.Item>Action</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

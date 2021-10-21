@@ -12,6 +12,7 @@ const initialState = {
   latest: [],
   searched: [],
   filtered: [],
+  categories: [],
 };
 
 export default function reducer(state = initialState, action) {
