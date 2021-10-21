@@ -16,6 +16,7 @@ import {
   fetchLatestSounds,
   fetchSearchedSounds,
   fetchFilteredSounds,
+  fetchAllCategories,
 } from "../store/sound/actions";
 
 export default function HomePage() {
@@ -27,8 +28,9 @@ export default function HomePage() {
   const filteredSounds = useSelector(selectFilteredSounds);
 
   useEffect(() => {
-    // dispatch(fetchPopularSounds);
-    // dispatch(fetchLatestSounds);
+    dispatch(fetchAllCategories);
+    dispatch(fetchPopularSounds);
+    dispatch(fetchLatestSounds);
   }, [dispatch]);
 
   return (

@@ -4,6 +4,7 @@ import {
   LATEST_SOUNDS,
   SEARCHED_SOUNDS,
   FILTERED_SOUNDS,
+  ALL_CATEGORIES,
 } from "../sound/actions";
 
 const initialState = {
@@ -49,6 +50,13 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: false,
         filtered: [...state.filtered, ...action.payload],
+      };
+    }
+    case ALL_CATEGORIES: {
+      return {
+        ...state,
+        loading: false,
+        categories: [...action.payload],
       };
     }
     default: {

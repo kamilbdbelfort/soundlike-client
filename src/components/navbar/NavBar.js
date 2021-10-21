@@ -8,13 +8,18 @@ import {
   Button,
 } from "react-bootstrap";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectAllCategories } from "../../store/sound/selectors";
 
 export default function NavBar() {
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
+  const allcategories = useSelector(selectAllCategories);
+  console.log(category, "what is cat?");
 
   const change_category = (event) => {
-    console.log("new sort order:", event.target.value);
+    let ctg = event.targe;
+    console.log("new category:", event.target.value);
     setCategory(event.target.value);
   };
 
@@ -42,12 +47,21 @@ export default function NavBar() {
               </Form>
               <Button variant="success">Search</Button>
               <NavDropdown
-                title="Categories"
+                title={category ? category : "Categories"}
                 id="basic-nav-dropdown"
-                onChange={change_category}
+                // onChange={change_category}
                 value={category}
               >
-                <NavDropdown.Item>Action</NavDropdown.Item>
+                {allcategories?.map((ctg) => {
+                  return (
+                    <NavDropdown.Item
+                      value={ctg.name}
+                      onClick={(e) => setCategory(ctg.name)}
+                    >
+                      {ctg.name}
+                    </NavDropdown.Item>
+                  );
+                })}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
