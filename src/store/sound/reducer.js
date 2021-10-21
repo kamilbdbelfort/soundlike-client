@@ -42,7 +42,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        searched: [...state.searched, ...action.payload],
+        searched: [...action.payload],
       };
     }
     case FILTERED_SOUNDS: {

@@ -10,18 +10,19 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAllCategories } from "../../store/sound/selectors";
+import { useDispatch } from "react-redux";
+import { fetchSearchedSounds } from "../../store/sound/actions";
 
 export default function NavBar() {
+  const dispatch = useDispatch();
   const [text, setText] = useState("");
   const [category, setCategory] = useState("");
   const allcategories = useSelector(selectAllCategories);
-  console.log(category, "what is cat?");
 
-  const change_category = (event) => {
-    let ctg = event.targe;
-    console.log("new category:", event.target.value);
-    setCategory(event.target.value);
-  };
+  function search(e) {
+    e.preventDefault();
+    dispatch(fetchSearchedSounds(text));
+  }
 
   return (
     <div style={{ margin: "0 1em" }}>
@@ -40,12 +41,11 @@ export default function NavBar() {
                     value={text}
                     onChange={(event) => setText(event.target.value)}
                   />
-                  {/* <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text> */}
                 </Form.Group>
               </Form>
-              <Button variant="success">Search</Button>
+              <Button variant="success" onClick={search}>
+                Search
+              </Button>
               <NavDropdown
                 title={category ? category : "Categories"}
                 id="basic-nav-dropdown"
