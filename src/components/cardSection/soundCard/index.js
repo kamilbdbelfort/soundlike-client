@@ -2,16 +2,20 @@ import { Card, Button, Badge } from "react-bootstrap";
 import React from "react";
 
 export default function SoundCard(props) {
+  const soundObj = props.sound;
   return (
-    <Card>
-      <Card.Img variant="top" src={props.imageURL} />
+    <Card style={{ margin: "10px" }}>
+      <Card.Title>{soundObj.name}</Card.Title>
+      <Card.Img
+        variant="top"
+        src={soundObj.imageURL}
+        style={{ height: "300px" }}
+      />
       <Button variant="succes">
-        Played <Badge bg="secondary">{props.played}</Badge>
-        <span className="visually-hidden">unread messages</span>
+        Played <Badge bg="secondary">{soundObj.played}</Badge>
       </Button>
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Text>{props.description}</Card.Text>
+        <Card.Text>{soundObj.description}</Card.Text>
       </Card.Body>
     </Card>
   );

@@ -5,11 +5,14 @@ import SoundCard from "./soundCard/index";
 
 export default function CardSection(props) {
   return (
-    <CardGroup>
-      {props.soundsList.map((sound) => {
-        return <SoundCard sound={sound} />;
-      })}
-      <Button>Load more...</Button>
-    </CardGroup>
+    <>
+      <h3>{props.title}</h3>
+      <CardGroup>
+        {props.soundsList.map((sound) => {
+          return <SoundCard key={sound.id} sound={sound} />;
+        })}
+        <Button>Load more...</Button>
+      </CardGroup>
+    </>
   );
 }
