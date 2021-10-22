@@ -14,8 +14,6 @@ import {
 import {
   fetchPopularSounds,
   fetchLatestSounds,
-  fetchSearchedSounds,
-  fetchFilteredSounds,
   fetchAllCategories,
 } from "../store/sound/actions";
 
@@ -40,8 +38,16 @@ export default function HomePage() {
       ) : (
         <div>
           <NavBar />
-          <CardSection title="POPULAR" soundsList={popularSounds} />
-          <CardSection title="LATEST" soundsList={latestSounds} />
+          {searchedSounds === [] && filteredSounds === [] ? (
+            <div>
+              <CardSection title="POPULAR" soundsList={popularSounds} />
+              <CardSection title="LATEST" soundsList={latestSounds} />{" "}
+            </div>
+          ) : (
+            searchedSounds !== [] && (
+              <CardSection title="text" soundsList={searchedSounds} />
+            )
+          )}
         </div>
       )}
     </div>
