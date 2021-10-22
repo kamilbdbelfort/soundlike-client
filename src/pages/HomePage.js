@@ -38,17 +38,11 @@ export default function HomePage() {
       ) : (
         <div>
           <NavBar />
-          {searchedSounds === [] && filteredSounds === [] ? (
-            <div>
-              <CardSection title="POPULAR" soundsList={popularSounds} />
-              <CardSection title="LATEST" soundsList={latestSounds} />{" "}
-            </div>
-          ) : (
-            searchedSounds !== [] &&
-            searchedSounds.map((item) => {
-              return <div></div>;
-            })
-          )}
+
+          <div>
+            <CardSection title="POPULAR" soundsList={popularSounds} />
+            <CardSection title="LATEST" soundsList={latestSounds} />{" "}
+          </div>
         </div>
       )}
     </div>
