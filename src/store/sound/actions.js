@@ -90,7 +90,7 @@ export function fetchFilteredSounds(id) {
     dispatch(startLoading);
     try {
       const response = await axios.get(`${apiUrl}/category/${id}`);
-      dispatch(fetchedFilteredSounds(response.data));
+      dispatch(fetchedFilteredSounds(response.data[0].sounds));
     } catch (e) {
       console.log(e.message);
     }
