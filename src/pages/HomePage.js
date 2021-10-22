@@ -36,17 +36,30 @@ export default function HomePage() {
       {isLoading ? (
         <Loading />
       ) : (
-        <div>
+        <div style={{ backgroundColor: "RGB(248, 249, 249)" }}>
           <NavBar />
-          {searchedSounds === [] && filteredSounds === [] ? (
+          {searchedSounds.length > 0 ? (
             <div>
-              <CardSection title="POPULAR" soundsList={popularSounds} />
-              <CardSection title="LATEST" soundsList={latestSounds} />{" "}
+              <CardSection title="SEARCHED" soundsList={searchedSounds} />
+            </div>
+          ) : filteredSounds.length > 0 ? (
+            <div>
+              <CardSection title="FILTERDED" soundsList={filteredSounds} />
             </div>
           ) : (
-            searchedSounds !== [] && (
-              <CardSection title="text" soundsList={searchedSounds} />
-            )
+            <div>
+              <CardSection
+                title="POPULAR"
+                soundsList={popularSounds}
+                onClickFunc={fetchPopularSounds}
+              />
+              <hr />
+              <CardSection
+                title="LATEST"
+                soundsList={latestSounds}
+                onClickFunc={fetchLatestSounds}
+              />{" "}
+            </div>
           )}
         </div>
       )}

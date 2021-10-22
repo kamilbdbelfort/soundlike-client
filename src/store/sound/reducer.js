@@ -5,6 +5,7 @@ import {
   SEARCHED_SOUNDS,
   FILTERED_SOUNDS,
   ALL_CATEGORIES,
+  UPDATE_SOUND,
 } from "../sound/actions";
 
 const initialState = {
@@ -59,6 +60,30 @@ export default function reducer(state = initialState, action) {
         ...state,
         loading: false,
         categories: [...action.payload],
+      };
+    }
+    case UPDATE_SOUND: {
+      const id = action.payload.id;
+      const played = action.payload.played;
+      const updatedArrayPopular = state.popular.map((sound) => {
+        return sound.id === id ? { ...sound, played: played } : sound;
+      });
+      const updatedArrayLatest = state.latest.map((sound) => {
+        return sound.id === id ? { ...sound, played: played } : sound;
+      });
+      const updatedArraySearched = state.searched.map((sound) => {
+        return sound.id === id ? { ...sound, played: played } : sound;
+      });
+      const updatedArrayFiltered = state.filtered.map((sound) => {
+        return sound.id === id ? { ...sound, played: played } : sound;
+      });
+      return {
+        ...state,
+        loading: false,
+        popular: updatedArrayPopular,
+        latest: updatedArrayLatest,
+        searched: updatedArraySearched,
+        filtered: updatedArrayFiltered,
       };
     }
     default: {

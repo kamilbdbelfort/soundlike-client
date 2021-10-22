@@ -9,7 +9,7 @@ import {
 } from "react-share";
 import axios from "axios";
 import fileDownload from "js-file-download";
-
+import { Button } from "react-bootstrap";
 import { FacebookIcon } from "react-share";
 import "../../App.css";
 export default function Sharing(props) {
@@ -19,7 +19,7 @@ export default function Sharing(props) {
   };
   console.log(props, "what are my props?");
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "space-around" }}>
       <FacebookShareButton url={"http://localhost:3000/"}>
         <FacebookIcon size={45} round />
       </FacebookShareButton>
@@ -30,8 +30,14 @@ export default function Sharing(props) {
         <WhatsappIcon size={45} round />
       </WhatsappShareButton>
 
-      <button
-        className="popup"
+      <Button
+className="popup"
+        style={{
+          backgroundColor: "gold",
+          color: "#171818",
+          borderColor: "gold",
+        }}
+ 
         onClick={() => {
           handleDownload(props.soundUrl, props.name);
         }}
@@ -40,7 +46,7 @@ export default function Sharing(props) {
         <span className="popuptext" id={props.soundUrl}>
           Press harder!
         </span>
-      </button>
+      </Button>
     </div>
   );
 }
