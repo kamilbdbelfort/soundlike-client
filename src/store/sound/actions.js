@@ -7,6 +7,7 @@ export const LATEST_SOUNDS = "LATEST_SOUNDS";
 export const SEARCHED_SOUNDS = "SEARCHED_SOUNDS";
 export const FILTERED_SOUNDS = "FILTERED_SOUNDS";
 export const ALL_CATEGORIES = "ALL_CATEGORIES";
+export const UPDATE_SOUND = "UPDATE_SOUND";
 
 export function startLoading() {
   return {
@@ -46,6 +47,12 @@ export function fetchedAllCategories(categories) {
   return {
     type: ALL_CATEGORIES,
     payload: categories,
+  };
+}
+export function updateSoundSucces(sound) {
+  return {
+    type: UPDATE_SOUND,
+    payload: sound,
   };
 }
 
@@ -105,4 +112,15 @@ export async function fetchAllCategories(dispatch, getState) {
   } catch (e) {
     console.log(e.message);
   }
+}
+
+export function updateSound(id) {
+  return async function thunk(dispatch, getState) {
+    try {
+      const response = await axios.patch(`${apiUrl}/${id}`);
+      dispatch(updateSoundSucces(response.data));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 }

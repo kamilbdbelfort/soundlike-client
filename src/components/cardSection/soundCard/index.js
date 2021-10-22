@@ -20,7 +20,7 @@ export default function SoundCard(props) {
         {/* <Button variant="succes" style={{ width: "50%", fontSize: "36px" }}>
           ▶️
         </Button> */}
-        <Player url={soundObj.soundURL} />
+        <Player url={soundObj.soundURL} id={soundObj.id} />
       </Container>
       <Card.Body>
         <Card.Text>{soundObj.description}</Card.Text>

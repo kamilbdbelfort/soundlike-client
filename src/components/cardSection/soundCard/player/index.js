@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
+
+import { updateSound } from "../../../../store/sound/actions";
 
 const useAudio = (url) => {
   const [audio] = useState(new Audio(url));
@@ -21,7 +24,8 @@ const useAudio = (url) => {
   return [playing, toggle];
 };
 
-const Player = ({ url }) => {
+const Player = ({ url, id }) => {
+  const dispatch = useDispatch();
   const [playing, toggle] = useAudio(url);
 
   return (
@@ -29,7 +33,11 @@ const Player = ({ url }) => {
       <Button
         variant="success"
         style={{ width: "100%", fontSize: "36px" }}
-        onClick={toggle}
+        onClick={(e) => {
+          e.preventDefault();
+          toggle();
+          dispatch(updateSound(id));
+        }}
       >
         {playing ? "⏸" : "▶️"}
       </Button>
