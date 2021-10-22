@@ -39,11 +39,20 @@ export default function HomePage() {
       ) : (
         <div>
           <NavBar />
-
-          <div>
-            <CardSection title="POPULAR" soundsList={popularSounds} />
-            <CardSection title="LATEST" soundsList={latestSounds} />{" "}
-          </div>
+          {searchedSounds.length > 0 ? (
+            <div>
+              <CardSection title="SEARCHED" soundsList={searchedSounds} />
+            </div>
+          ) : filteredSounds.length > 0 ? (
+            <div>
+              <CardSection title="FILTERDED" soundsList={filteredSounds} />
+            </div>
+          ) : (
+            <div>
+              <CardSection title="POPULAR" soundsList={popularSounds} />
+              <CardSection title="LATEST" soundsList={latestSounds} />{" "}
+            </div>
+          )}
         </div>
       )}
     </div>
