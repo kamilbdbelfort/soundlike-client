@@ -9,19 +9,13 @@ import {
 } from "react-share";
 import axios from "axios";
 import fileDownload from "js-file-download";
-
-import { FacebookIcon } from "react-share";
 import { Button } from "react-bootstrap";
-
+import { FacebookIcon } from "react-share";
+import "../../App.css";
 export default function Sharing(props) {
-  const handleDownload = (url, filename) => {
-    axios
-      .get(url, {
-        responseType: "blob",
-      })
-      .then((res) => {
-        fileDownload(res.data, filename);
-      });
+  const handleDownload = () => {
+    let popup = document.getElementById(props.soundUrl);
+    popup.classList.toggle("show");
   };
   console.log(props, "what are my props?");
   return (
@@ -37,16 +31,21 @@ export default function Sharing(props) {
       </WhatsappShareButton>
 
       <Button
+className="popup"
         style={{
           backgroundColor: "gold",
           color: "#171818",
           borderColor: "gold",
         }}
+ 
         onClick={() => {
           handleDownload(props.soundUrl, props.name);
         }}
       >
         Download
+        <span className="popuptext" id={props.soundUrl}>
+          Press harder!
+        </span>
       </Button>
     </div>
   );
