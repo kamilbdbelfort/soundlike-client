@@ -7,7 +7,7 @@ export default function SoundCard(props) {
   const soundObj = props.sound;
   return (
     <Card style={{ margin: "10px" }}>
-      <Card.Title>{soundObj.name}</Card.Title>
+      <Card.Title style={{ margin: "0 auto" }}>{soundObj.name}</Card.Title>
       <Card.Img
         variant="top"
         src={soundObj.imageURL}

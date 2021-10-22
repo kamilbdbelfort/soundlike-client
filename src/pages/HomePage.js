@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "../components/navbar/NavBar";
 import Loading from "../components/loading/Loading";
 import CardSection from "../components/cardSection/index";
-import Cardsound from "../components/cardSection/soundCard/index";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -49,8 +48,16 @@ export default function HomePage() {
             </div>
           ) : (
             <div>
-              <CardSection title="POPULAR" soundsList={popularSounds} />
-              <CardSection title="LATEST" soundsList={latestSounds} />{" "}
+              <CardSection
+                title="POPULAR"
+                soundsList={popularSounds}
+                onClickFunc={fetchPopularSounds}
+              />
+              <CardSection
+                title="LATEST"
+                soundsList={latestSounds}
+                onClickFunc={fetchLatestSounds}
+              />{" "}
             </div>
           )}
         </div>
