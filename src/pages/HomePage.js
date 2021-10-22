@@ -53,20 +53,6 @@ export default function HomePage() {
               <CardSection title="LATEST" soundsList={latestSounds} />{" "}
             </div>
           )}
-          {/* {!searchedSounds && !filteredSounds ? (
-            <div>
-              <CardSection title="POPULAR" soundsList={popularSounds} />
-              <CardSection title="LATEST" soundsList={latestSounds} />{" "}
-            </div>
-          ) : searchedSounds !== [] ? (
-            <div>
-              <CardSection />
-            </div>
-          ) : (
-            <div>
-              <CardSection />
-            </div>
-          )} */}
         </div>
       )}
     </div>
