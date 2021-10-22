@@ -14,6 +14,7 @@ export default function CardSection(props) {
           margin: "1em",
           display: "flex",
           flexWrap: "wrap",
+          justifyContent: "space-between",
         }}
       >
         {props.soundsList.map((sound) => {
@@ -22,13 +23,19 @@ export default function CardSection(props) {
       </div>
       {props.title === "POPULAR" || props.title === "LATEST" ? (
         <Button
-          style={{ justifyContent: "right", margin: "0 1.5em" }}
+          style={{
+            justifyContent: "right",
+            margin: "0 1.5em",
+            backgroundColor: "#171818",
+            borderColor: "gold",
+            color: "gold",
+          }}
           onClick={(e) => {
             e.preventDefault();
             dispatch(props.onClickFunc);
           }}
         >
-          Load more...
+          Load more
         </Button>
       ) : (
         <></>

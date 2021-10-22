@@ -17,6 +17,7 @@ const useAudio = (url) => {
   useEffect(() => {
     audio.addEventListener("ended", () => setPlaying(false));
     return () => {
+      setPlaying(false);
       audio.removeEventListener("ended", () => setPlaying(false));
     };
   }, []);
@@ -31,8 +32,12 @@ const Player = ({ url, id }) => {
   return (
     <div>
       <Button
-        variant="success"
-        style={{ width: "100%", fontSize: "36px" }}
+        style={{
+          width: "100%",
+          fontSize: "40px",
+          border: "none",
+          backgroundColor: "transparent ",
+        }}
         onClick={(e) => {
           e.preventDefault();
           toggle();

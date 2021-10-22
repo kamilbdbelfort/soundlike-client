@@ -25,7 +25,7 @@ export default function Sharing(props) {
   };
   console.log(props, "what are my props?");
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "space-around" }}>
       <FacebookShareButton url={"http://localhost:3000/"}>
         <FacebookIcon size={45} round />
       </FacebookShareButton>
@@ -37,6 +37,11 @@ export default function Sharing(props) {
       </WhatsappShareButton>
 
       <Button
+        style={{
+          backgroundColor: "gold",
+          color: "#171818",
+          borderColor: "gold",
+        }}
         onClick={() => {
           handleDownload(props.soundUrl, props.name);
         }}

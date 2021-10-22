@@ -52,9 +52,13 @@ export default function NavBar() {
               </Form.Group>
             </Form>
             <Button
-              variant="success"
               onClick={search}
-              style={{ margin: "0 1em" }}
+              style={{
+                margin: "0 1em",
+                backgroundColor: "#171818",
+                color: "gold",
+                borderColor: "gold",
+              }}
             >
               Search
             </Button>
