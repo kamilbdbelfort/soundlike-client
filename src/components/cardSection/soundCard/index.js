@@ -1,5 +1,7 @@
-import { Card, Button, Badge } from "react-bootstrap";
+import { Card, Button, Badge, Container } from "react-bootstrap";
 import React from "react";
+
+import Player from "./player";
 
 export default function SoundCard(props) {
   const soundObj = props.sound;
@@ -11,9 +13,15 @@ export default function SoundCard(props) {
         src={soundObj.imageURL}
         style={{ height: "300px" }}
       />
-      <Button variant="succes">
-        Played <Badge bg="secondary">{soundObj.played}</Badge>
-      </Button>
+      <Container style={{ display: "flex", flexDirection: "row" }}>
+        <Button variant="succes" style={{ width: "50%", fontSize: "24px" }}>
+          Played <Badge bg="secondary">{soundObj.played}</Badge>
+        </Button>
+        {/* <Button variant="succes" style={{ width: "50%", fontSize: "36px" }}>
+          ▶️
+        </Button> */}
+        <Player url={soundObj.soundURL} />
+      </Container>
       <Card.Body>
         <Card.Text>{soundObj.description}</Card.Text>
       </Card.Body>

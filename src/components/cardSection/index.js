@@ -11,8 +11,8 @@ export default function CardSection(props) {
         {props.soundsList.map((sound) => {
           return <SoundCard key={sound.id} sound={sound} />;
         })}
-        <Button>Load more...</Button>
       </CardGroup>
+      <Button style={{ justifyContent: "flex-end" }}>Load more...</Button>
     </>
   );
 }
