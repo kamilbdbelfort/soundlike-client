@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
+
+import { updateSound } from "../../../../store/sound/actions";
 
 const useAudio = (url) => {
   const [audio] = useState(new Audio(url));
@@ -14,6 +17,7 @@ const useAudio = (url) => {
   useEffect(() => {
     audio.addEventListener("ended", () => setPlaying(false));
     return () => {
+      setPlaying(false);
       audio.removeEventListener("ended", () => setPlaying(false));
     };
   }, []);
@@ -21,15 +25,24 @@ const useAudio = (url) => {
   return [playing, toggle];
 };
 
-const Player = ({ url }) => {
+const Player = ({ url, id }) => {
+  const dispatch = useDispatch();
   const [playing, toggle] = useAudio(url);
 
   return (
     <div>
       <Button
-        variant="success"
-        style={{ width: "100%", fontSize: "36px" }}
-        onClick={toggle}
+        style={{
+          width: "100%",
+          fontSize: "40px",
+          border: "none",
+          backgroundColor: "transparent ",
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          toggle();
+          dispatch(updateSound(id));
+        }}
       >
         {playing ? "⏸" : "▶️"}
       </Button>

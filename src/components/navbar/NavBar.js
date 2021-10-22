@@ -15,6 +15,7 @@ import {
   fetchSearchedSounds,
   fetchFilteredSounds,
 } from "../../store/sound/actions";
+import "./navbar.css";
 
 export default function NavBar() {
   const dispatch = useDispatch();
@@ -28,50 +29,61 @@ export default function NavBar() {
   }
 
   return (
-    <div style={{ margin: "0 1em" }}>
-      <Navbar bg="light" expand="lg" style={{ padding: "1.5em" }}>
+    <div className="d-flex" style={{ margin: "0 1em" }}>
+      <Navbar
+        className="w-100"
+        bg="light"
+        expand="lg"
+        style={{ padding: "1.5em" }}
+      >
         <Container>
           <Navbar.Brand href="/"> 🎙️ SOUNDLIKE 🎙️</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Form style={{ margin: "0 1em" }}>
-                <Form.Group className="mb-3" controlId="formBasicSearch">
-                  <Form.Control
-                    type="text"
-                    style={{ width: "700px", margin: "0 2em" }}
-                    placeholder="Search for sounds, ex: friends, star wars..."
-                    value={text}
-                    onChange={(event) => setText(event.target.value)}
-                  />
-                </Form.Group>
-              </Form>
-              <Button variant="success" onClick={search}>
-                Search
-              </Button>
-              <NavDropdown
-                title={category ? category : "Categories"}
-                id="basic-nav-dropdown"
-                // onChange={change_category}
-                value={category}
-              >
-                {allcategories?.map((ctg) => {
-                  return (
-                    <NavDropdown.Item
-                      value={ctg.name}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setCategory(ctg.name);
-                        dispatch(fetchFilteredSounds(ctg.id));
-                      }}
-                    >
-                      {ctg.name}
-                    </NavDropdown.Item>
-                  );
-                })}
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+          {/* <Navbar.Collapse id="basic-navbar-nav" className="collapsed-style"> */}
+          <Nav className="mx-auto w-100 align-items-center">
+            <Form className="search-form-style">
+              <Form.Group style={{ width: "100%" }} controlId="formBasicSearch">
+                <Form.Control
+                  type="text"
+                  placeholder="Search for sounds, ex: friends, star wars..."
+                  value={text}
+                  onChange={(event) => setText(event.target.value)}
+                />
+              </Form.Group>
+            </Form>
+            <Button
+              onClick={search}
+              style={{
+                margin: "0 1em",
+                backgroundColor: "#171818",
+                color: "gold",
+                borderColor: "gold",
+              }}
+            >
+              Search
+            </Button>
+            <NavDropdown
+              title={category ? category : "Categories"}
+              id="basic-nav-dropdown"
+              value={category}
+            >
+              {allcategories?.map((ctg) => {
+                return (
+                  <NavDropdown.Item
+                    value={ctg.name}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCategory(ctg.name);
+                      dispatch(fetchFilteredSounds(ctg.id));
+                    }}
+                  >
+                    {ctg.name}
+                  </NavDropdown.Item>
+                );
+              })}
+            </NavDropdown>
+          </Nav>
+          {/* </Navbar.Collapse> */}
         </Container>
       </Navbar>
     </div>
