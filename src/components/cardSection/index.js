@@ -9,19 +9,20 @@ export default function CardSection(props) {
   return (
     <>
       <h3 style={{ padding: ".5em" }}>{props.title}</h3>
-      <CardGroup
+      <div
         style={{
-          backgroundColor: "black",
           margin: "1em",
+          display: "flex",
+          flexWrap: "wrap",
         }}
       >
         {props.soundsList.map((sound) => {
           return <SoundCard key={sound.id} sound={sound} />;
         })}
-      </CardGroup>
+      </div>
       {props.title === "POPULAR" || props.title === "LATEST" ? (
         <Button
-          style={{ justifyContent: "flex-end" }}
+          style={{ justifyContent: "right", margin: "0 1.5em" }}
           onClick={(e) => {
             e.preventDefault();
             dispatch(props.onClickFunc);

@@ -36,7 +36,7 @@ export default function HomePage() {
       {isLoading ? (
         <Loading />
       ) : (
-        <div>
+        <div style={{ backgroundColor: "RGB(248, 249, 249)" }}>
           <NavBar />
           {searchedSounds.length > 0 ? (
             <div>
@@ -53,6 +53,7 @@ export default function HomePage() {
                 soundsList={popularSounds}
                 onClickFunc={fetchPopularSounds}
               />
+              <hr />
               <CardSection
                 title="LATEST"
                 soundsList={latestSounds}
