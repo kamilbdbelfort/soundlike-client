@@ -1,5 +1,6 @@
 import { Card, Button, Badge, Container } from "react-bootstrap";
 import React from "react";
+import Sharing from "../../sharing/Sharing";
 
 import Player from "./player";
 
@@ -27,6 +28,11 @@ export default function SoundCard(props) {
       <Card.Body>
         <Card.Text>{soundObj.description}</Card.Text>
       </Card.Body>
+      <Sharing
+        name={soundObj.name}
+        soundUrl={soundObj.soundURL}
+        imageURL={soundObj.imageURL}
+      />
     </Card>
   );
 }
