@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import {
   FacebookShareButton,
   TwitterIcon,
@@ -7,8 +6,6 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import axios from "axios";
-import fileDownload from "js-file-download";
 import { Button } from "react-bootstrap";
 import { FacebookIcon } from "react-share";
 import "../../App.css";
@@ -31,13 +28,12 @@ export default function Sharing(props) {
       </WhatsappShareButton>
 
       <Button
-className="popup"
+        className="popup"
         style={{
           backgroundColor: "gold",
           color: "#171818",
           borderColor: "gold",
         }}
- 
         onClick={() => {
           handleDownload(props.soundUrl, props.name);
         }}
