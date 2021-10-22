@@ -1,13 +1,16 @@
 import { Card, Button, Badge, Container } from "react-bootstrap";
 import React from "react";
+import Sharing from "../../sharing/Sharing";
 
 import Player from "./player";
 
 export default function SoundCard(props) {
   const soundObj = props.sound;
   return (
-    <Card style={{ margin: "10px" }}>
-      <Card.Title>{soundObj.name}</Card.Title>
+    <Card
+      style={{ margin: "10px", width: "300px", boxShadow: "10px 5px 5px gray" }}
+    >
+      <Card.Title style={{ margin: "0 auto" }}>{soundObj.name}</Card.Title>
       <Card.Img
         variant="top"
         src={soundObj.imageURL}
@@ -25,6 +28,11 @@ export default function SoundCard(props) {
       <Card.Body>
         <Card.Text>{soundObj.description}</Card.Text>
       </Card.Body>
+      <Sharing
+        name={soundObj.name}
+        soundUrl={soundObj.soundURL}
+        imageURL={soundObj.imageURL}
+      />
     </Card>
   );
 }
