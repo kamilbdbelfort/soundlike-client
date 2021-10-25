@@ -1,6 +1,6 @@
 # SOUND LIKE APP
 
-🎙️ [Check out the deployed version](upate in progres...) 🎙️
+🎙️ [Check out the deployed version](https://soundlike.netlify.app/) 🎙️
 
 This is a simple app where learn how to work in a team using branches.
 
